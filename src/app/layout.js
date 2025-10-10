@@ -3,6 +3,7 @@ import "../styles/globals.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import { AnalyticsProvider } from "./context/AnalyticsContext";
 import Footer from "./pages/Footer";
+import BackToTopButton from "./components/navigation/BackToTopButton";
 
 export const metadata = {
   title: "Open Source Component Library",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
               </div>
               <main className="max-w-7xl mx-auto">{children}</main>
               <Footer />
+              <BackToTopButton />
             </div>
           </AnalyticsProvider>
         </ThemeProvider>
