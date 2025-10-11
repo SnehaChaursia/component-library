@@ -65,6 +65,9 @@ import { FileUpload } from "./FormInput/FileUpload";
 import { FormValidation } from "./FormInput/FormValidation";
 import { Slider } from "./FormInput/Slider";
 
+// Avatar
+import { Avatar, AvatarGroup } from "./Avatar/Avatar";
+
 export default function Page() {
   // Search and Filter State
   const [searchTerm, setSearchTerm] = useState("");
@@ -115,6 +118,31 @@ export default function Page() {
     { label: "Navigation", href: "/components/navigation" },
     { label: "Breadcrumb" },
   ];
+
+  // avatar
+  const users = [
+  {
+    src: "https://randomuser.me/api/portraits/women/68.jpg",
+    alt: "Alice",
+    online: true,
+  },
+  {
+    src: "https://randomuser.me/api/portraits/men/45.jpg",
+    alt: "Bob",
+    online: false,
+  },
+  {
+    src: "https://randomuser.me/api/portraits/men/32.jpg",
+    alt: "Charlie",
+    online: true,
+  },
+  {
+    src: "https://randomuser.me/api/portraits/women/12.jpg",
+    alt: "Dana",
+    online: false,
+  },
+];
+
 
   // All components with search data
   const allComponents = {
@@ -677,6 +705,34 @@ export default function Page() {
             </div>
           </section>
         )}
+
+        {users && users.length > 0 && (
+  <section
+    id="avatars"
+    className="bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[#0f1a1b] dark:via-[#0a1a1a] dark:to-[#0a1a1a] border border-sky-100 dark:border-sky-900 shadow-xl rounded-2xl p-10"
+  >
+    <h2 className="relative text-2xl font-semibold mb-6 flex items-center justify-center gap-2 text-sky-600 dark:text-sky-200">
+      <span>Avatar Components ({users.length})</span>
+      <span className="absolute top-10 h-1 w-full bg-gradient-to-r from-sky-300 to-indigo-300 rounded-full block" />
+    </h2>
+
+    <div className="space-y-8">
+      {/* Single Avatars */}
+      <div className="flex flex-wrap gap-4">
+        {users.map((user, index) => (
+          <Avatar key={index} {...user} size="md" />
+        ))}
+      </div>
+
+      {/* Avatar Group */}
+      <div className="mt-6">
+        <h3 className="text-lg font-medium mb-3">Avatar Group</h3>
+        <AvatarGroup avatars={users} size="md" max={4} />
+      </div>
+    </div>
+  </section>
+)}
+
 
       </div>
     </div>
