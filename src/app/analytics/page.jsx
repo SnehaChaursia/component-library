@@ -1,15 +1,44 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAnalytics } from '../context/AnalyticsContext';
 import { BarChart3, TrendingUp, Eye, Copy, Download, Calendar, Award, Activity } from 'lucide-react';
 import ConfirmationModal from '../components/ConfirmationModal';
+import PopularityChart from '../components/PopularityChart';
 
 export default function AnalyticsPage() {
   const { analytics, getPopularComponents, getRecentStats, exportAnalytics } = useAnalytics();
   const [showResetModal, setShowResetModal] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
   
   const popularComponents = getPopularComponents();
   const recentStats = getRecentStats();
+
+  // Detect dark theme
+  useEffect(() => {
+    const checkDarkTheme = () => {
+      const isDark = document.documentElement.classList.contains('dark') ||
+                    window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setIsDarkTheme(isDark);
+    };
+
+    checkDarkTheme();
+
+    // Listen for theme changes
+    const observer = new MutationObserver(checkDarkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addListener(checkDarkTheme);
+
+    return () => {
+      observer.disconnect();
+      mediaQuery.removeListener(checkDarkTheme);
+    };
+  }, []);
   
   // Calculate session duration
   const sessionDuration = Math.floor((Date.now() - analytics.sessionStart) / 1000 / 60); // minutes
@@ -114,7 +143,7 @@ export default function AnalyticsPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
-          {/* Popular Components */}
+          {/* Popular Components Chart */}
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border dark:border-gray-700">
             <div className="flex items-center gap-2 mb-6">
               <TrendingUp className="w-5 h-5 text-blue-600 dark:text-blue-400" />
@@ -123,39 +152,7 @@ export default function AnalyticsPage() {
               </h2>
             </div>
             
-            <div className="space-y-4">
-              {popularComponents.length > 0 ? (
-                popularComponents.map((component, index) => (
-                  <div key={component.name} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center w-8 h-8 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-full text-sm font-semibold">
-                        {index + 1}
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900 dark:text-white">
-                          {component.name}
-                        </p>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                          {component.copies} copies
-                        </p>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <p className="font-semibold text-gray-900 dark:text-white">
-                        {component.views}
-                      </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">views</p>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-                  <BarChart3 className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                  <p>No component data yet</p>
-                  <p className="text-sm">Start exploring components to see analytics</p>
-                </div>
-              )}
-            </div>
+            <PopularityChart data={popularComponents} isDarkTheme={isDarkTheme} />
           </div>
 
           {/* Recent Activity */}
