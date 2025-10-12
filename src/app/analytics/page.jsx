@@ -1,10 +1,12 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import { useAnalytics } from '../context/AnalyticsContext';
 import { BarChart3, TrendingUp, Eye, Copy, Download, Calendar, Award, Activity } from 'lucide-react';
+import ConfirmationModal from '../components/ConfirmationModal';
 
 export default function AnalyticsPage() {
   const { analytics, getPopularComponents, getRecentStats, exportAnalytics } = useAnalytics();
+  const [showResetModal, setShowResetModal] = useState(false);
   
   const popularComponents = getPopularComponents();
   const recentStats = getRecentStats();
@@ -18,6 +20,13 @@ export default function AnalyticsPage() {
   // Calculate average views per component
   const avgViewsPerComponent = uniqueComponents > 0 ? 
     Math.round(analytics.totalViews / uniqueComponents) : 0;
+
+  // Handle reset analytics data
+  const handleResetData = () => {
+    localStorage.removeItem('componentAnalytics');
+    setShowResetModal(false);
+    window.location.reload();
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
@@ -242,18 +251,25 @@ export default function AnalyticsPage() {
               Export Analytics
             </button>
             <button
-              onClick={() => {
-                if (confirm('This will reset all analytics data. Are you sure?')) {
-                  localStorage.removeItem('componentAnalytics');
-                  window.location.reload();
-                }
-              }}
+              onClick={() => setShowResetModal(true)}
               className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
             >
               Reset Data
             </button>
           </div>
         </div>
+
+        {/* Confirmation Modal */}
+        <ConfirmationModal
+          isOpen={showResetModal}
+          onClose={() => setShowResetModal(false)}
+          onConfirm={handleResetData}
+          title="Reset Analytics Data"
+          message="This will permanently delete all analytics data including views, copies, and session information. This action cannot be undone."
+          confirmText="Reset Data"
+          cancelText="Cancel"
+          variant="danger"
+        />
       </div>
     </div>
   );
