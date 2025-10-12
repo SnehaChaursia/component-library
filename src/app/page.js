@@ -160,39 +160,46 @@ export default function HomePage() {
         </section>
 
         {/* Usage Instructions */}
-        <section className="max-w-5xl mx-auto px-6 py-24 bg-white dark:bg-gray-900 rounded-3xl shadow-2xl text-center space-y-14">
-          <h2 className="text-4xl font-bold">Getting Started</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-            {usageSteps.map(({ step, title, description, code }) => (
-              <div
-                key={step}
-                className="rounded-xl p-8 bg-indigo-50 dark:bg-indigo-900 shadow-lg hover:shadow-xl transition cursor-pointer"
-                onClick={() => {
-                  navigator.clipboard.writeText(code);
-                  trackComponentView(`GettingStartedStep${step}`);
-                }}
-              >
-                <div className="text-6xl font-extrabold text-purple-600 mb-6">
-                  {step}
-                </div>
-                <h3 className="font-semibold text-xl mb-4">{title}</h3>
-                <p className="mb-6 text-gray-700 dark:text-gray-300">
-                  {description}
-                </p>
-                <div className="relative group">
-                  <pre className="bg-purple-100 dark:bg-purple-800 text-purple-900 dark:text-purple-300 p-5 rounded-lg overflow-x-auto text-left text-sm">
-                    {code}
-                  </pre>
-                  <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="text-xs bg-purple-600 text-white px-2 py-1 rounded">
-                      Click to copy
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
+        <section className="max-w-6xl mx-auto px-8 py-24 bg-gradient-to-br from-indigo-950 via-blue-900 to-indigo-800 dark:from-[#011C40] dark:via-[#022B60] dark:to-[#03397D] rounded-3xl shadow-2xl text-center space-y-16 transition-all duration-300">
+  <h2 className="text-5xl font-extrabold text-white tracking-wide drop-shadow-md">
+    Getting Started 🚀
+  </h2>
+
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+    {usageSteps.map(({ step, title, description, code }) => (
+      <div
+        key={step}
+        className="rounded-2xl p-8 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer group"
+        onClick={() => {
+          navigator.clipboard.writeText(code);
+          trackComponentView(`GettingStartedStep${step}`);
+        }}
+      >
+        <div className="text-6xl font-black text-blue-400 mb-6 drop-shadow-sm">
+          {step}
+        </div>
+        <h3 className="font-semibold text-2xl mb-4 text-white tracking-wide">
+          {title}
+        </h3>
+        <p className="mb-6 text-gray-300 text-sm leading-relaxed">
+          {description}
+        </p>
+
+        <div className="relative">
+          <pre className="bg-gradient-to-r from-indigo-950 to-indigo-800 text-blue-100 p-5 rounded-lg overflow-x-auto text-left text-sm border border-indigo-700 transition-all duration-300 group-hover:brightness-110">
+            {code}
+          </pre>
+          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <span className="text-xs bg-blue-600 text-white px-2 py-1 rounded shadow-sm">
+              Click to copy 📋
+            </span>
           </div>
-        </section>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
 
         {/* Call to Action */}
         <section className="max-w-4xl mx-auto px-6 py-28 text-center">
