@@ -58,6 +58,10 @@ import InteractiveTiles from "./backgrounds/InteractiveTiles";
 //Badge
 import { Badge, Chip } from "./Badge";
 
+// alerts
+import ALertManager from "./alert/ALertManager";
+// laoders
+import Loader from "./loaders/Loader";
 // form Input
 
 import { DatePicker } from "./FormInput/DatePicker";
@@ -67,6 +71,15 @@ import { Slider } from "./FormInput/Slider";
 
 // Avatar
 import { Avatar, AvatarGroup } from "./Avatar/Avatar";
+import DualRingLoader from "./loaders/DualRingLoader";
+import DotsLoader from "./loaders/DotsLoader";
+import BarLoader from "./loaders/BarLoader";
+import Tooltip from "./tooltips/Tooltip";
+import AnimatedTooltip from "./tooltips/AnimatedTooltip";
+
+// icons
+import { HiOutlineRefresh } from "react-icons/hi";
+import { FaTrash } from "react-icons/fa";
 
 export default function Page() {
   // Search and Filter State
@@ -333,6 +346,66 @@ export default function Page() {
         desc: "Used for filters, categories, and removable tags",
       },
     ],
+    utility:[
+      {
+        name:'MinimalAlert',
+        component: (
+          <div className="flex justify-center items-center">
+            <ALertManager/> 
+          </div>
+        ),
+        keywords:['alert' , 'popup'],
+      },{
+        name:'Loaders',
+        component:(
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="flex items-center flex-col gap-10">
+              <h1 className=" bg-blue-600 text-left font-semibold text-xl shadow-2xl border-2 p-4 rounded-full ">Simple Loader</h1>
+              <Loader/>
+            </div>
+            <div className="flex items-center flex-col gap-10">
+              <h1 className=" text-left bg-black font-semibold text-xl shadow-2xl border-2 p-4 rounded-full ">Dual Loader</h1>
+              <DualRingLoader/>
+            </div>
+            <div className="flex items-center flex-col gap-10">
+              <h1  className="bg-gradient-to-r from-red-400 via-green-500 to-blue-400 text-left font-semibold text-xl shadow-2xl border-2 p-4 rounded-full ">Dots Loader</h1>
+              <div className="mt-8"><DotsLoader/></div>
+            </div>
+            <div className="flex items-center flex-col gap-10">
+              <h1  className="bg-emerald-400 text-left font-semibold text-xl shadow-2xl border-2 p-4 rounded-full ">Bar Loader</h1>
+              <div className="mt-4">
+                <BarLoader/>
+              </div>
+            </div>
+          </div>
+
+        ),
+        keywords:['spiner' , 'loader','loading'],
+      },{
+        name:'Tooltips',
+        component:(
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6 ml-4">
+            <div className="flex items-center flex-col gap-8">
+              <h1 className=" bg-gray-900 text-left font-semibold text-lg shadow-2xl border-2 py-2 px-4 rounded-full ">Simple ToolTip</h1>
+                <Tooltip text="Click to refresh">
+                  <button className="bg-blue-500 text-white px-4 py-2 rounded">
+                    <HiOutlineRefresh size={26}/>
+                  </button>
+                </Tooltip>
+            </div>
+            <div className="flex items-center flex-col gap-8">
+              <h1 className=" bg-red-900 text-left font-semibold text-lg shadow-2xl border-2 py-2 px-4 rounded-full ">Simple ToolTip</h1>
+                <AnimatedTooltip text="Delete item">
+                  <button className="bg-red-500 text-white px-4 py-2 rounded">
+                    <FaTrash size={26}/>
+                  </button>
+                </AnimatedTooltip>
+            </div>
+          </div>             
+        ),
+        keywords:['tooltip','popups'],
+      }
+    ],
   };
 
   // Filter logic
@@ -586,6 +659,26 @@ export default function Page() {
                     </p>
                   )}
                   {item.component}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Utility components */}
+        {filteredComponents.utility &&(
+          <section id="utility" className="bg-gradient-to-br from-pink-400 via-blue-400 to-red-400 border dark:border-amber-600 border-red-950 shadow-2xl rounded-2xl p-10">
+            <h2 className="relative text-2xl font-semibold mb-6 flex items-center justify-center gap-2 text-gray-950">
+              <span>
+                Utility Components ({filteredComponents.utility.length})
+              </span>
+              <span className="absolute top-10 h-1 w-full bg-gradient-to-r from-pink-200 to-pink-700 rounded-full block" />
+            </h2>
+            <div className="space-y-8">
+              {filteredComponents.utility.map((item , index) =>(
+                <div key={index}>
+                  <h3 className="text-2xl dark:text-gray-950 font-medium mb-8">{item.name}</h3>
+                  <div title={item.name}>{item.component}</div>
                 </div>
               ))}
             </div>
