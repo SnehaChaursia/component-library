@@ -81,6 +81,7 @@ import AnimatedTooltip from "./tooltips/AnimatedTooltip";
 // icons
 import { HiOutlineRefresh } from "react-icons/hi";
 import { FaTrash } from "react-icons/fa";
+import SignupPage from "./FormInput/SignupPage";
 
 export default function Page() {
   // Search and Filter State
@@ -807,7 +808,7 @@ export default function Page() {
                   📝 Signup Page
                 </h3>
                 <div className="scale-90 origin-top-left" style={{height: 'auto', maxHeight: '800px', overflow: 'visible'}}>
-                  <SignupPage 
+                  <SignupPage
                     onSignup={(data) => console.log('Signup:', data)}
                     onLogin={() => console.log('Navigate to login')}
                   />
