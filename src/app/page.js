@@ -122,7 +122,7 @@ export default function HomePage() {
         {/* Features Section */}
         <section
           id="features"
-          className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center"
+          className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4grid gap-4 text-center"
         >
           {features.map(({ icon, title, description }) => (
             <div
