@@ -78,6 +78,8 @@ import BarLoader from "./loaders/BarLoader";
 import Tooltip from "./tooltips/Tooltip";
 import AnimatedTooltip from "./tooltips/AnimatedTooltip";
 
+// Accordion
+import Accordion from "./Accordion/index";
 // icons
 import { HiOutlineRefresh } from "react-icons/hi";
 import { FaTrash } from "react-icons/fa";
@@ -135,27 +137,27 @@ export default function Page() {
 
   // avatar
   const users = [
-  {
-    src: "https://randomuser.me/api/portraits/women/68.jpg",
-    alt: "Alice",
-    online: true,
-  },
-  {
-    src: "https://randomuser.me/api/portraits/men/45.jpg",
-    alt: "Bob",
-    online: false,
-  },
-  {
-    src: "https://randomuser.me/api/portraits/men/32.jpg",
-    alt: "Charlie",
-    online: true,
-  },
-  {
-    src: "https://randomuser.me/api/portraits/women/12.jpg",
-    alt: "Dana",
-    online: false,
-  },
-];
+    {
+      src: "https://randomuser.me/api/portraits/women/68.jpg",
+      alt: "Alice",
+      online: true,
+    },
+    {
+      src: "https://randomuser.me/api/portraits/men/45.jpg",
+      alt: "Bob",
+      online: false,
+    },
+    {
+      src: "https://randomuser.me/api/portraits/men/32.jpg",
+      alt: "Charlie",
+      online: true,
+    },
+    {
+      src: "https://randomuser.me/api/portraits/women/12.jpg",
+      alt: "Dana",
+      online: false,
+    },
+  ];
 
 
   // All components with search data
@@ -209,11 +211,11 @@ export default function Page() {
         keywords: ["rainbow", "action", "colorful"],
         desc: "Used for call to actions",
       },
-      { 
-        name: 'Glass Button', 
-        component: <GlassButton>Button</GlassButton>, 
-        keywords: ['glass', 'cta', 'action'], 
-        desc : "Used for any action"
+      {
+        name: 'Glass Button',
+        component: <GlassButton>Button</GlassButton>,
+        keywords: ['glass', 'cta', 'action'],
+        desc: "Used for any action"
       },
     ],
     cards: [
@@ -281,7 +283,7 @@ export default function Page() {
             label="Sample Checkbox"
             description="Check this option"
             checked={false}
-            onChange={() => {}}
+            onChange={() => { }}
           />
         ),
         keywords: ["checkbox", "check", "toggle", "boolean"],
@@ -289,7 +291,7 @@ export default function Page() {
       {
         name: "Login Form",
         component: (
-          <LoginForm 
+          <LoginForm
             variant="minimal"
             showSocialLogin={true}
             onLogin={(data) => console.log('Demo login:', data)}
@@ -361,66 +363,172 @@ export default function Page() {
         desc: "Used for filters, categories, and removable tags",
       },
     ],
-    utility:[
+    utility: [
       {
-        name:'MinimalAlert',
+        name: 'MinimalAlert',
         component: (
           <div className="flex justify-center items-center">
-            <ALertManager/> 
+            <ALertManager />
           </div>
         ),
-        keywords:['alert' , 'popup'],
-      },{
-        name:'Loaders',
-        component:(
+        keywords: ['alert', 'popup'],
+      }, {
+        name: 'Loaders',
+        component: (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             <div className="flex items-center flex-col gap-10">
               <h1 className=" bg-blue-600 text-left font-semibold text-xl shadow-2xl border-2 p-4 rounded-full ">Simple Loader</h1>
-              <Loader/>
+              <Loader />
             </div>
             <div className="flex items-center flex-col gap-10">
               <h1 className=" text-left bg-black font-semibold text-xl shadow-2xl border-2 p-4 rounded-full ">Dual Loader</h1>
-              <DualRingLoader/>
+              <DualRingLoader />
             </div>
             <div className="flex items-center flex-col gap-10">
-              <h1  className="bg-gradient-to-r from-red-400 via-green-500 to-blue-400 text-left font-semibold text-xl shadow-2xl border-2 p-4 rounded-full ">Dots Loader</h1>
-              <div className="mt-8"><DotsLoader/></div>
+              <h1 className="bg-gradient-to-r from-red-400 via-green-500 to-blue-400 text-left font-semibold text-xl shadow-2xl border-2 p-4 rounded-full ">Dots Loader</h1>
+              <div className="mt-8"><DotsLoader /></div>
             </div>
             <div className="flex items-center flex-col gap-10">
-              <h1  className="bg-emerald-400 text-left font-semibold text-xl shadow-2xl border-2 p-4 rounded-full ">Bar Loader</h1>
+              <h1 className="bg-emerald-400 text-left font-semibold text-xl shadow-2xl border-2 p-4 rounded-full ">Bar Loader</h1>
               <div className="mt-4">
-                <BarLoader/>
+                <BarLoader />
               </div>
             </div>
           </div>
 
         ),
-        keywords:['spiner' , 'loader','loading'],
-      },{
-        name:'Tooltips',
-        component:(
+        keywords: ['spiner', 'loader', 'loading'],
+      }, {
+        name: 'Tooltips',
+        component: (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6 ml-4">
             <div className="flex items-center flex-col gap-8">
               <h1 className=" bg-gray-900 text-left font-semibold text-lg shadow-2xl border-2 py-2 px-4 rounded-full ">Simple ToolTip</h1>
-                <Tooltip text="Click to refresh">
-                  <button className="bg-blue-500 text-white px-4 py-2 rounded">
-                    <HiOutlineRefresh size={26}/>
-                  </button>
-                </Tooltip>
+              <Tooltip text="Click to refresh">
+                <button className="bg-blue-500 text-white px-4 py-2 rounded">
+                  <HiOutlineRefresh size={26} />
+                </button>
+              </Tooltip>
             </div>
             <div className="flex items-center flex-col gap-8">
               <h1 className=" bg-red-900 text-left font-semibold text-lg shadow-2xl border-2 py-2 px-4 rounded-full ">Simple ToolTip</h1>
-                <AnimatedTooltip text="Delete item">
-                  <button className="bg-red-500 text-white px-4 py-2 rounded">
-                    <FaTrash size={26}/>
-                  </button>
-                </AnimatedTooltip>
+              <AnimatedTooltip text="Delete item">
+                <button className="bg-red-500 text-white px-4 py-2 rounded">
+                  <FaTrash size={26} />
+                </button>
+              </AnimatedTooltip>
             </div>
-          </div>             
+          </div>
         ),
-        keywords:['tooltip','popups'],
+        keywords: ['tooltip', 'popups'],
       }
     ],
+    accordion: [
+      {
+        name: "",
+        component: (
+          <div className="">
+            <div className="space-y-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6">
+              {/* Basic Accordion */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Basic Accordion</h3>
+                <Accordion
+                  variant="bordered"
+                  defaultOpen={0}
+                  items={[
+                    {
+                      title: "What is React?",
+                      content: "React is a JavaScript library for building user interfaces, particularly web applications. It allows developers to create reusable UI components and manage application state efficiently."
+                    },
+                    {
+                      title: "How does React work?",
+                      content: "React uses a virtual DOM to efficiently update and render components. When state changes, React creates a new virtual DOM tree, compares it with the previous one, and updates only the necessary parts of the real DOM."
+                    },
+                    {
+                      title: "What are React hooks?",
+                      content: "React hooks are functions that let you use state and other React features in functional components. Common hooks include useState, useEffect, useContext, and useReducer."
+                    },
+                    {
+                      title: "What is JSX?",
+                      content: "JSX is a syntax extension for JavaScript that allows you to write HTML-like code in your JavaScript files. It makes it easier to create and manage UI components in React."
+                    },
+                  ]}
+                />
+              </div>
+
+              {/* Multiple Open Accordion */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Multiple Open Accordion</h3>
+                <Accordion
+                  allowMultiple
+                  variant="shadow"
+                  items={[
+                    {
+                      title: "🚀 Performance Tips",
+                      content: "Use React.memo, useMemo, and useCallback to optimize performance. Avoid creating objects and functions in render methods, and use proper dependency arrays in useEffect."
+                    },
+                    {
+                      title: "🎨 Styling Approaches",
+                      content: "You can style React components using CSS modules, styled-components, Tailwind CSS, or inline styles. Choose the approach that best fits your project's needs and team preferences."
+                    },
+                    {
+                      title: "🔧 Development Tools",
+                      content: "Essential tools include React Developer Tools browser extension, Create React App, Next.js, Vite, and various testing libraries like Jest and React Testing Library."
+                    },
+                    {
+                      title: "📱 Mobile Development",
+                      content: "For mobile development, consider React Native for cross-platform apps, or use responsive design techniques with React for mobile web applications."
+                    },
+                  ]}
+                />
+              </div>
+
+              {/* Minimal Accordion */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Minimal Accordion</h3>
+                <Accordion
+                  variant="minimal"
+                  items={[
+                    {
+                      title: "Getting Started",
+                      content: "To get started with React, install Node.js, create a new project using Create React App or Vite, and start building your first component. The official React documentation is an excellent resource."
+                    },
+                    {
+                      title: "Best Practices",
+                      content: "Follow component composition patterns, keep components small and focused, use proper prop types or TypeScript, and implement proper error boundaries for better user experience."
+                    },
+                    {
+                      title: "State Management",
+                      content: "For simple applications, useState and useReducer are sufficient. For complex state management, consider Context API, Redux, Zustand, or other state management libraries."
+                    },
+                  ]}
+                />
+              </div>
+
+              {/* Always Open Accordion */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Always Open Accordion</h3>
+                <Accordion
+                  alwaysOpen
+                  variant="minimal"
+                  items={[
+                    {
+                      title: "📚 Learning Resources",
+                      content: "Check out the official React documentation, React tutorials on YouTube, online courses like those on Udemy or Coursera, and practice with coding challenges on platforms like LeetCode or HackerRank."
+                    },
+                    {
+                      title: "🌐 Community",
+                      content: "Join React communities on Discord, Reddit (r/reactjs), Stack Overflow, and GitHub. Participate in discussions, ask questions, and share your knowledge with other developers."
+                    },
+                  ]}
+                />
+              </div>
+            </div>
+          </div>
+        ),
+        keywords: ['accordion', 'collapsible', 'faq', 'expandable'],
+      }
+    ]
   };
 
   // Filter logic
@@ -556,8 +664,8 @@ export default function Page() {
                 <div
                   key={index}
                   className={`${darkMode
-                      ? "bg-gray-800 text-gray-200"
-                      : "bg-gray-300 text-gray-900"
+                    ? "bg-gray-800 text-gray-200"
+                    : "bg-gray-300 text-gray-900"
                     } shadow-md rounded-2xl p-5 flex flex-col items-center text-center border border-gray-100 hover:shadow-lg transition w-60`}
                 >
                   <div title={item.name} className="mb-3">
@@ -681,7 +789,7 @@ export default function Page() {
         )}
 
         {/* Utility components */}
-        {filteredComponents.utility &&(
+        {filteredComponents.utility && (
           <section id="utility" className="bg-gradient-to-br from-pink-400 via-blue-400 to-red-400 border dark:border-amber-600 border-red-950 shadow-2xl rounded-2xl p-10">
             <h2 className="relative text-2xl font-semibold mb-6 flex items-center justify-center gap-2 text-gray-950">
               <span>
@@ -690,7 +798,7 @@ export default function Page() {
               <span className="absolute top-10 h-1 w-full bg-gradient-to-r from-pink-200 to-pink-700 rounded-full block" />
             </h2>
             <div className="space-y-8">
-              {filteredComponents.utility.map((item , index) =>(
+              {filteredComponents.utility.map((item, index) => (
                 <div key={index}>
                   <h3 className="text-2xl dark:text-gray-950 font-medium mb-8">{item.name}</h3>
                   <div title={item.name}>{item.component}</div>
@@ -793,7 +901,7 @@ export default function Page() {
                   🔐 Login Form
                 </h3>
                 <div className="mt-4">
-                  <LoginForm 
+                  <LoginForm
                     variant="minimal"
                     onLogin={(data) => console.log('Demo login:', data)}
                     onSignup={() => console.log('Demo signup clicked')}
@@ -830,31 +938,53 @@ export default function Page() {
         )}
 
         {users && users.length > 0 && (
-  <section
-    id="avatars"
-    className="bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[#0f1a1b] dark:via-[#0a1a1a] dark:to-[#0a1a1a] border border-sky-100 dark:border-sky-900 shadow-xl rounded-2xl p-10"
-  >
-    <h2 className="relative text-2xl font-semibold mb-6 flex items-center justify-center gap-2 text-sky-600 dark:text-sky-200">
-      <span>Avatar Components ({users.length})</span>
-      <span className="absolute top-10 h-1 w-full bg-gradient-to-r from-sky-300 to-indigo-300 rounded-full block" />
-    </h2>
+          <section
+            id="avatars"
+            className="bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[#0f1a1b] dark:via-[#0a1a1a] dark:to-[#0a1a1a] border border-sky-100 dark:border-sky-900 shadow-xl rounded-2xl p-10"
+          >
+            <h2 className="relative text-2xl font-semibold mb-6 flex items-center justify-center gap-2 text-sky-600 dark:text-sky-200">
+              <span>Avatar Components ({users.length})</span>
+              <span className="absolute top-10 h-1 w-full bg-gradient-to-r from-sky-300 to-indigo-300 rounded-full block" />
+            </h2>
 
-    <div className="space-y-8">
-      {/* Single Avatars */}
-      <div className="flex flex-wrap gap-4">
-        {users.map((user, index) => (
-          <Avatar key={index} {...user} size="md" />
-        ))}
-      </div>
+            <div className="space-y-8">
+              {/* Single Avatars */}
+              <div className="flex flex-wrap gap-4">
+                {users.map((user, index) => (
+                  <Avatar key={index} {...user} size="md" />
+                ))}
+              </div>
 
-      {/* Avatar Group */}
-      <div className="mt-6">
-        <h3 className="text-lg font-medium mb-3">Avatar Group</h3>
-        <AvatarGroup avatars={users} size="md" max={4} />
-      </div>
-    </div>
-  </section>
-)}
+              {/* Avatar Group */}
+              <div className="mt-6">
+                <h3 className="text-lg font-medium mb-3">Avatar Group</h3>
+                <AvatarGroup avatars={users} size="md" max={4} />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Accordion Section */}
+        {filteredComponents.accordion && (
+          <section
+            id="accordion"
+            className="bg-white/90 dark:bg-gray-900/90 border border-blue-100 dark:border-blue-900 shadow-xl rounded-2xl p-10"
+          >
+            <h2 className="relative text-2xl font-semibold mb-6 flex items-center justify-center gap-2 text-pink-600 dark:text-pink-200">
+              <span>Accordion Components</span>
+            </h2>
+
+            <div className="space-y-8">
+              {filteredComponents.accordion.map((item, index) => (
+                <div key={index}>
+                  <h3 className="text-lg font-medium mb-3">{item.name}</h3>
+                  <div title={item.name}>{item.component}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
 
 
       </div>
