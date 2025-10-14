@@ -81,6 +81,7 @@ import AnimatedTooltip from "./tooltips/AnimatedTooltip";
 // icons
 import { HiOutlineRefresh } from "react-icons/hi";
 import { FaTrash } from "react-icons/fa";
+import SignupPage from "./FormInput/SignupPage";
 
 export default function Page() {
   // Search and Filter State
@@ -798,6 +799,18 @@ export default function Page() {
                     onLogin={(data) => console.log('Demo login:', data)}
                     onSignup={() => console.log('Demo signup clicked')}
                     onForgotPassword={() => console.log('Demo forgot password clicked')}
+                  />
+                </div>
+              </div>
+              {/* Signup Page Card */}
+              <div className="p-6 bg-gradient-to-r from-green-50 to-green-100/80 dark:from-green-900 dark:to-green-700 text-green-900 dark:text-green-100 rounded-xl font-medium shadow-sm border border-green-200 dark:border-green-800">
+                <h3 className="text-lg font-semibold mb-2">
+                  📝 Signup Page
+                </h3>
+                <div className="scale-90 origin-top-left" style={{height: 'auto', maxHeight: '800px', overflow: 'visible'}}>
+                  <SignupPage
+                    onSignup={(data) => console.log('Signup:', data)}
+                    onLogin={() => console.log('Navigate to login')}
                   />
                 </div>
               </div>
