@@ -1,5 +1,7 @@
 "use client";
 import React from "react";
+import hljs from "highlight.js";
+import "highlight.js/styles/github-dark.css";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { useTheme } from './context/ThemeContext';
@@ -72,7 +74,7 @@ export default function HomePage() {
   return (
     <div className="transition-colors duration-300">
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-        
+
         {/* Hero Section */}
         <section className="max-w-7xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-4">
           <div className="md:w-1/2 space-y-8 text-center md:text-left">
@@ -160,46 +162,47 @@ export default function HomePage() {
         </section>
 
         {/* Usage Instructions */}
-        <section className="max-w-6xl mx-auto px-8 py-24 bg-gradient-to-br from-indigo-950 via-blue-900 to-indigo-800 dark:from-[#011C40] dark:via-[#022B60] dark:to-[#03397D] rounded-3xl shadow-2xl text-center space-y-16 transition-all duration-300">
-  <h2 className="text-5xl font-extrabold text-white tracking-wide drop-shadow-md">
-    Getting Started 🚀
-  </h2>
-
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-    {usageSteps.map(({ step, title, description, code }) => (
-      <div
-        key={step}
-        className="rounded-2xl p-8 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer group"
-        onClick={() => {
-          navigator.clipboard.writeText(code);
-          trackComponentView(`GettingStartedStep${step}`);
-        }}
-      >
-        <div className="text-6xl font-black text-blue-400 mb-6 drop-shadow-sm">
-          {step}
-        </div>
-        <h3 className="font-semibold text-2xl mb-4 text-white tracking-wide">
-          {title}
-        </h3>
-        <p className="mb-6 text-gray-300 text-sm leading-relaxed">
-          {description}
-        </p>
-
-        <div className="relative">
-          <pre className="bg-gradient-to-r from-indigo-950 to-indigo-800 text-blue-100 p-5 rounded-lg overflow-x-auto text-left text-sm border border-indigo-700 transition-all duration-300 group-hover:brightness-110">
-            {code}
-          </pre>
-          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-            <span className="text-xs bg-blue-600 text-white px-2 py-1 rounded shadow-sm">
-              Click to copy 📋
-            </span>
+        <section className="max-w-5xl mx-auto px-6 py-8 bg-theme-surface rounded-3xl shadow-theme-md text-center space-y-10">
+          <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+            Getting Started
+          </h2>
+          <div className="flex flex-col gap-4 max-w-3xl mx-auto">
+            {usageSteps.map(({ step, title, description, code }) => (
+              <div
+                key={step}
+                className="rounded-xl p-4 bg-theme-surface-hover shadow-theme-sm hover:shadow-theme-md transition border border-theme-light"
+              >
+                <div className="flex items-center gap-4 mb-2">
+                  <p className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-2xl font-bold text-white">
+                    {step}
+                  </p>
+                  <p className="font-semibold text-xl text-theme-primary">{title}</p>
+                </div>
+                <p className="mb-2 text-theme-secondary">{description}</p>
+                <div className="relative">
+                  <div className="bg-theme-surface rounded-lg overflow-hidden">
+                    <div className="flex justify-between items-center px-4 py-2 border-b border-theme-light">
+                      <span className="text-theme-muted text-sm">Code</span>
+                      <button
+                        onClick={() => {
+                          navigator.clipboard.writeText(code);
+                          trackComponentView(`GettingStartedStep${step}`);
+                        }}
+                        className="flex items-center gap-2 text-theme-muted hover:text-theme-primary text-sm bg-theme-surface hover:bg-theme-surface-hover px-3 py-1 rounded-md transition-colors"
+                      >
+                        <span>Copy</span>
+                        <svg width="12" height="12" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1 9.50006C1 10.3285 1.67157 11.0001 2.5 11.0001H4L4 10.0001H2.5C2.22386 10.0001 2 9.7762 2 9.50006L2 2.50006C2 2.22392 2.22386 2.00006 2.5 2.00006L9.5 2.00006C9.77614 2.00006 10 2.22392 10 2.50006V4.00002H5.5C4.67158 4.00002 4 4.67159 4 5.50002V12.5C4 13.3284 4.67158 14 5.5 14H12.5C13.3284 14 14 13.3284 14 12.5V5.50002C14 4.67159 13.3284 4.00002 12.5 4.00002H11V2.50006C11 1.67163 10.3284 1.00006 9.5 1.00006H2.5C1.67157 1.00006 1 1.67163 1 2.50006V9.50006ZM5 5.50002C5 5.22388 5.22386 5.00002 5.5 5.00002H12.5C12.7761 5.00002 13 5.22388 13 5.50002V12.5C13 12.7762 12.7761 13 12.5 13H5.5C5.22386 13 5 12.7762 5 12.5V5.50002Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd" />
+                        </svg>
+                      </button>
+                    </div>
+                    <CodeBlock code={code} />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-      </div>
-    ))}
-  </div>
-</section>
-
+        </section>
 
         {/* Call to Action */}
         <section className="max-w-4xl mx-auto px-6 py-28 text-center">
@@ -218,5 +221,23 @@ export default function HomePage() {
         </section>
       </div>
     </div>
+  );
+}
+
+function CodeBlock({ code }) {
+  const ref = React.useRef(null);
+
+  React.useEffect(() => {
+    hljs.highlightElement(ref.current);
+  }, [code]);
+
+  return (
+    <pre
+      className="text-sm overflow-x-auto font-mono"
+    >
+      <code ref={ref} className="language-javascript font-mono">
+        {code}
+      </code>
+    </pre>
   );
 }
