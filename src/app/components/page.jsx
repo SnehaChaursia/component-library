@@ -657,7 +657,7 @@ export default function Page() {
             className="bg-white/90 dark:bg-gray-900/90 border border-blue-100 dark:border-blue-900 shadow-xl rounded-2xl p-10 transition-colors duration-300"
           >
             <h2 className="relative text-2xl font-semibold mb-6 flex justify-center items-center gap-2 text-blue-700 dark:text-blue-200">
-              <span>Buttons ({filteredComponents.buttons.length})</span>
+              <span className="whitespace-nowrap text-[1.3rem] sm:text-2xl md:text-3xl lg:text-3xl">Buttons ({filteredComponents.buttons.length})</span>
               <span className="absolute top-10 h-1 w-full bg-gradient-to-r from-blue-400 to-fuchsia-400 rounded-full block" />
             </h2>
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -688,7 +688,7 @@ export default function Page() {
             className="bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-50 dark:from-[#23293b] dark:via-[#1e142e] dark:to-[#222849] border border-purple-100 dark:border-purple-900 shadow-xl rounded-2xl p-10"
           >
             <h2 className="relative text-2xl font-semibold mb-6 flex justify-center items-center gap-2 text-purple-600 dark:text-fuchsia-200">
-              <span>Cards ({filteredComponents.cards.length})</span>
+              <span className="whitespace-nowrap text-[1.3rem] sm:text-2xl md:text-3xl lg:text-3xl">Cards ({filteredComponents.cards.length})</span>
               <span className="absolute top-10 h-1 w-full bg-gradient-to-r from-purple-300 to-fuchsia-300 rounded-full block" />
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -708,7 +708,7 @@ export default function Page() {
             className="bg-white/90 w-full dark:bg-gray-900/90 border border-green-100 dark:border-green-900 shadow-xl rounded-2xl p-10"
           >
             <h2 className="relative text-2xl font-semibold mb-6 flex items-center justify-center gap-2 text-green-700 dark:text-green-200">
-              <span>Input Components ({filteredComponents.inputs.length})</span>
+              <span className="whitespace-nowrap text-[1.3rem] sm:text-2xl md:text-3xl lg:text-3xl">Input Components ({filteredComponents.inputs.length})</span>
               <span className="absolute top-10 h-1 w-full bg-gradient-to-r from-green-300 to-sky-300 rounded-full block" />
             </h2>
             <div className="max-w-lg space-y-6 flex flex-col justify-center">
@@ -771,7 +771,7 @@ export default function Page() {
             className="bg-white/90 w-full dark:bg-gray-900/90 border border-indigo-100 dark:border-indigo-900 shadow-xl rounded-2xl p-10"
           >
             <h2 className="relative text-2xl font-semibold mb-6 flex items-center justify-center gap-2 text-indigo-700 dark:text-indigo-200">
-              <span>Backgrounds ({filteredComponents.backgrounds.length})</span>
+              <span className="whitespace-nowrap text-[1.3rem] sm:text-2xl md:text-3xl lg:text-3xl">Backgrounds ({filteredComponents.backgrounds.length})</span>
               <span className="absolute top-10 h-1 w-full bg-gradient-to-r from-indigo-300 to-purple-300 rounded-full block" />
             </h2>
             <div className="max-w-3xl">
@@ -793,7 +793,7 @@ export default function Page() {
         {filteredComponents.utility && (
           <section id="utility" className="bg-gradient-to-br from-pink-400 via-blue-400 to-red-400 border dark:border-amber-600 border-red-950 shadow-2xl rounded-2xl p-10">
             <h2 className="relative text-2xl font-semibold mb-6 flex items-center justify-center gap-2 text-gray-950">
-              <span>
+              <span className="whitespace-nowrap text-[1.3rem] sm:text-2xl md:text-3xl lg:text-3xl">
                 Utility Components ({filteredComponents.utility.length})
               </span>
               <span className="absolute top-10 h-1 w-full bg-gradient-to-r from-pink-200 to-pink-700 rounded-full block" />
@@ -816,7 +816,7 @@ export default function Page() {
             className="bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50 dark:from-[#3a3020] dark:via-[#412920] dark:to-[#16101a] border border-yellow-100 dark:border-yellow-900 shadow-xl rounded-2xl p-10"
           >
             <h2 className="relative text-2xl font-semibold mb-6 flex items-center justify-center gap-2 text-yellow-600 dark:text-yellow-200">
-              <span>
+              <span className="whitespace-nowrap text-[1.1rem] sm:text-2xl md:text-3xl lg:text-3xl">
                 Navigation Components ({filteredComponents.navigation.length})
               </span>
               <span className="absolute top-10 h-1 w-full bg-gradient-to-r from-yellow-300 to-pink-300 rounded-full block" />
@@ -836,7 +836,7 @@ export default function Page() {
         {filterType === "all" && !searchTerm && (
           <section className="bg-white/90 dark:bg-gray-900/90 border border-blue-100 dark:border-blue-900 shadow-xl rounded-2xl p-10">
             <h2 className="relative text-2xl font-semibold mb-6 flex items-center justify-center gap-2 text-blue-700 dark:text-blue-200">
-              <span>Feedback Components</span>
+              <span className="whitespace-nowrap text-[1.2rem] sm:text-2xl md:text-3xl lg:text-3xl">Feedback Components</span>
               <span className="absolute top-10 h-1 w-full bg-gradient-to-r from-blue-300 to-violet-300 rounded-full block" />
             </h2>
             <div className="grid gap-4">
@@ -861,35 +861,35 @@ export default function Page() {
         )}
 
         {filterType === "all" && !searchTerm && (
-          <section className="bg-white/90 dark:bg-gray-900/90 border border-blue-100 dark:border-blue-900 shadow-xl rounded-2xl p-10 m-10">
+          <section className="bg-white/90 dark:bg-gray-900/90 border border-blue-100 dark:border-blue-900 shadow-xl rounded-2xl p-10">
             {/* Heading */}
             <h2 className="relative text-2xl font-semibold mb-6 flex items-center justify-center gap-2 text-blue-700 dark:text-blue-200">
-              <span>Form Helper Components</span>
+              <span className="whitespace-nowrap text-[1.3rem] sm:text-2xl md:text-3xl lg:text-3xl">Form Helper Components</span>
               <span className="absolute top-10 h-1 w-full bg-gradient-to-r from-blue-300 to-violet-300 rounded-full block" />
             </h2>
 
             {/* Components Grid */}
-            <div className="grid gap-6">
+            <div className="space-y-4">
               {/* Date Picker Card */}
-              <div className="p-6 bg-gradient-to-r from-pink-50 to-pink-100/80 dark:from-pink-900 dark:to-pink-700 text-pink-900 dark:text-pink-100 rounded-xl font-medium shadow-sm border border-pink-200 dark:border-pink-800">
+              <div className="p-6 bg-gradient-to-r from-pink-50 to-pink-100/80 dark:from-pink-900 dark:to-pink-700 text-pink-900 dark:text-pink-100 rounded-xl font-medium shadow-sm border border-pink-200 dark:border-pink-800 w-full">
                 <h3 className="text-lg font-semibold mb-2">📅 Date Picker</h3>
                 <DatePicker label="Choose a Date" />
               </div>
 
               {/* Slider Card */}
-              <div className="p-6 bg-gradient-to-r from-green-50 to-green-100/80 dark:from-green-900 dark:to-green-700 text-green-900 dark:text-green-100 rounded-xl font-medium shadow-sm border border-green-200 dark:border-green-800">
+              <div className="w-full p-6 bg-gradient-to-r from-green-50 to-green-100/80 dark:from-green-900 dark:to-green-700 text-green-900 dark:text-green-100 rounded-xl font-medium shadow-sm border border-green-200 dark:border-green-800">
                 <h3 className="text-lg font-semibold mb-2">🎚 Slider</h3>
                 <Slider min={0} max={50} />
               </div>
 
               {/* File Upload Card */}
-              <div className="p-6 bg-gradient-to-r from-yellow-50 to-yellow-100/80 dark:from-yellow-900 dark:to-yellow-700 text-yellow-900 dark:text-yellow-100 rounded-xl font-medium shadow-sm border border-yellow-200 dark:border-yellow-800">
+              <div className="w-full p-6 bg-gradient-to-r from-yellow-50 to-yellow-100/80 dark:from-yellow-900 dark:to-yellow-700 text-yellow-900 dark:text-yellow-100 rounded-xl font-medium shadow-sm border border-yellow-200 dark:border-yellow-800">
                 <h3 className="text-lg font-semibold mb-2">📁 File Upload</h3>
                 <FileUpload />
               </div>
 
               {/* Form Validation Card */}
-              <div className="p-6 bg-gradient-to-r from-blue-50 to-blue-100/80 dark:from-blue-900 dark:to-blue-700 text-blue-900 dark:text-blue-100 rounded-xl font-medium shadow-sm border border-blue-200 dark:border-blue-800">
+              <div className="w-full p-6 bg-gradient-to-r from-blue-50 to-blue-100/80 dark:from-blue-900 dark:to-blue-700 text-blue-900 dark:text-blue-100 rounded-xl font-medium shadow-sm border border-blue-200 dark:border-blue-800">
                 <h3 className="text-lg font-semibold mb-2">
                   ✅ Form Validation
                 </h3>
@@ -897,7 +897,7 @@ export default function Page() {
               </div>
 
               {/* Login Form Card */}
-              <div className="p-6 bg-gradient-to-r from-purple-50 to-purple-100/80 dark:from-purple-900 dark:to-purple-700 text-purple-900 dark:text-purple-100 rounded-xl font-medium shadow-sm border border-purple-200 dark:border-purple-800">
+              <div className="w-full p-6 bg-gradient-to-r from-purple-50 to-purple-100/80 dark:from-purple-900 dark:to-purple-700 text-purple-900 dark:text-purple-100 rounded-xl font-medium shadow-sm border border-purple-200 dark:border-purple-800">
                 <h3 className="text-lg font-semibold mb-2">
                   🔐 Login Form
                 </h3>
@@ -911,11 +911,11 @@ export default function Page() {
                 </div>
               </div>
               {/* Signup Page Card */}
-              <div className="p-6 bg-gradient-to-r from-green-50 to-green-100/80 dark:from-green-900 dark:to-green-700 text-green-900 dark:text-green-100 rounded-xl font-medium shadow-sm border border-green-200 dark:border-green-800">
+              <div className="w-full flex flex-col justify-center p-6 bg-gradient-to-r from-green-50 to-green-100/80 dark:from-green-900 dark:to-green-700 text-green-900 dark:text-green-100 rounded-xl font-medium shadow-sm border border-green-200 dark:border-green-800">
                 <h3 className="text-lg font-semibold mb-2">
                   📝 Signup Page
                 </h3>
-                <div className="scale-90 origin-top-left" style={{height: 'auto', maxHeight: '800px', overflow: 'visible'}}>
+                <div className="scale-90 w-full max-w-lg mx-auto mt-8 px-2 origin-top-left">
                   <SignupPage
                     onSignup={(data) => console.log('Signup:', data)}
                     onLogin={() => console.log('Navigate to login')}
@@ -933,7 +933,7 @@ export default function Page() {
             className="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-[#0f1b1a] dark:via-[#0a1a1a] dark:to-[#0a1a1a] border border-emerald-100 dark:border-emerald-900 shadow-xl rounded-2xl p-10"
           >
             <h2 className="relative text-2xl font-semibold mb-6 flex items-center justify-center gap-2 text-emerald-600 dark:text-emerald-200">
-              <span>Badge Components ({filteredComponents.badges.length})</span>
+              <span className="whitespace-nowrap text-[1.3rem] sm:text-2xl md:text-3xl lg:text-3xl">Badge Components ({filteredComponents.badges.length})</span>
               <span className="absolute top-10 h-1 w-full bg-gradient-to-r from-emerald-300 to-cyan-300 rounded-full block" />
             </h2>
             <div className="space-y-8">
@@ -956,7 +956,7 @@ export default function Page() {
             className="bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 dark:from-[#0f1a1b] dark:via-[#0a1a1a] dark:to-[#0a1a1a] border border-sky-100 dark:border-sky-900 shadow-xl rounded-2xl p-10"
           >
             <h2 className="relative text-2xl font-semibold mb-6 flex items-center justify-center gap-2 text-sky-600 dark:text-sky-200">
-              <span>Avatar Components ({users.length})</span>
+              <span className="whitespace-nowrap text-[1.3rem] sm:text-2xl md:text-3xl lg:text-3xl">Avatar Components ({users.length})</span>
               <span className="absolute top-10 h-1 w-full bg-gradient-to-r from-sky-300 to-indigo-300 rounded-full block" />
             </h2>
 
@@ -984,7 +984,7 @@ export default function Page() {
             className="bg-white/90 dark:bg-gray-900/90 border border-blue-100 dark:border-blue-900 shadow-xl rounded-2xl p-10"
           >
             <h2 className="relative text-2xl font-semibold mb-6 flex items-center justify-center gap-2 text-pink-600 dark:text-pink-200">
-              <span>Accordion Components</span>
+              <span className="whitespace-nowrap text-[1.3rem] sm:text-2xl md:text-3xl lg:text-3xl">Accordion Components</span>
             </h2>
 
             <div className="space-y-8">

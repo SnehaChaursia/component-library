@@ -1,7 +1,7 @@
 export default function Breadcrumb({ items = [], separator = "/" }) {
   return (
-    <nav className="flex" aria-label="Breadcrumb">
-      <ol className="inline-flex items-center space-x-1 md:space-x-3">
+    <nav className="flex flex-wrap" aria-label="Breadcrumb">
+      <ol className="flex flex-wrap items-center space-x-1 md:space-x-3">
         {items.map((item, index) => {
           const isLast = index === items.length - 1
           

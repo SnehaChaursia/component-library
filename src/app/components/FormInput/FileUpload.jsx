@@ -18,7 +18,7 @@ export const FileUpload = ({ onFileSelect }) => {
   };
 
   return (
-    <div style={{ marginBottom: "1rem" }}>
+    <div className="flex flex-wrap p-2" style={{ marginBottom: "1rem" }}>
       <label
         style={{
           display: "block",
@@ -29,6 +29,7 @@ export const FileUpload = ({ onFileSelect }) => {
           alignItems: "center",
           justifyContent: "center",
           cursor: "pointer",
+          padding:'1rem',
         }}
       >
         {file ? file.name : "Drag & Drop file or click to upload"}
