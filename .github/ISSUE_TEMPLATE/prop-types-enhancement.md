@@ -2,7 +2,7 @@
 name: PropTypes Enhancement
 about: Add PropTypes validation to components for better type checking
 title: 'Enhancement: Add PropTypes validation to components'
-labels: 'enhancement', 'good first issue', 'hacktoberfest'
+labels: 'enhancement, good first issue, hacktoberfest'
 assignees: ''
 
 ---

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 const DangerButton = ({ children, ...props }) => {
     return (
@@ -10,6 +11,10 @@ const DangerButton = ({ children, ...props }) => {
             {children}
         </button>
     );
+};
+
+DangerButton.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default DangerButton;
