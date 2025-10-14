@@ -31,8 +31,8 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white border-t border-gray-200 dark:border-gray-800 transition-all duration-300 mt-8">
-      <div className="max-w-7xl mx-auto px-6 py-12">
+    <footer className="relative bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white border-t border-gray-200 dark:border-gray-600 transition-all duration-300 mt-auto shadow-[0_-4px_12px_rgba(0,0,0,0.08)] dark:shadow-[0_-4px_12px_rgba(255,255,255,0.05)]">
+      <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
           {/* Left Section */}
           <div className="text-center md:text-left max-w-md">
@@ -51,9 +51,9 @@ const Footer = () => {
           </div>
 
           {/* Right Section (Social Links) */}
-          <div className="flex flex-col items-center md:items-end gap-4">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Follow Us</h3>
-            <div className="flex space-x-4">
+          <div className="text-center md:text-right flex flex-col items-center md:items-end gap-4">
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">Follow Us</h3>
+            <div className="flex justify-center space-x-4">
               {socialLinks.map((link, index) => (
                 <FooterLink
                   key={index}
@@ -67,14 +67,15 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-200 dark:border-gray-700 mt-8 pt-6 text-center">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-t border-gray-200 dark:border-gray-600 transition-all duration-300  mt-4 pt-2.5 text-center">
+          <div className="text-center space-y-1">
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+              Made with <span className="text-red-500">💜</span> for Hacktoberfest
+            </p>
             <p className="text-sm text-gray-600 dark:text-gray-400">
               © {new Date().getFullYear()} MyLibrary Component Library. All rights reserved.
             </p>
-            <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1">
-              Made with <span className="text-red-500">💜</span> for Hacktoberfest
-            </p>
+            
           </div>
         </div>
       </div>
