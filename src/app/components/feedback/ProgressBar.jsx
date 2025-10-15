@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export default function ProgressBar({ 
   value = 0, 
   max = 100, 
@@ -5,7 +7,11 @@ export default function ProgressBar({
   showPercentage = true,
   size = "md",
   color = "indigo",
-  animated = false
+  animated = false,
+  id,
+  className = "",
+  ariaLabel,
+  ariaLabelledby,
 }) {
   const percentage = Math.min(100, Math.max(0, (value / max) * 100))
   
@@ -24,21 +30,42 @@ export default function ProgressBar({
     gray: "bg-gray-600 dark:bg-gray-500"
   }
 
+  // Determine what to use for labeling the progress bar
+  const ariaLabelProps = {};
+  if (ariaLabel) {
+    ariaLabelProps['aria-label'] = ariaLabel;
+  } else if (ariaLabelledby) {
+    ariaLabelProps['aria-labelledby'] = ariaLabelledby;
+  } else if (label) {
+    ariaLabelProps['aria-labelledby'] = `${id}-label`;
+  }
+
   return (
-    <div className="w-full">
+    <div className={`w-full ${className}`}>
       {(label || showPercentage) && (
         <div className="flex justify-between items-center mb-1">
-          {label && <span className="text-sm font-medium text-theme-primary">{label}</span>}
+          {label && (
+            <span 
+              id={label ? `${id}-label` : undefined}
+              className="text-sm font-medium text-theme-primary"
+            >
+              {label}
+            </span>
+          )}
           {showPercentage && (
-            <span className="text-sm text-theme-secondary">{Math.round(percentage)}%</span>
+            <span className="text-sm text-theme-secondary">
+              {Math.round(percentage)}%
+            </span>
           )}
         </div>
       )}
       
-      <div className={`
-        w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden
-        ${sizes[size] || sizes.md}
-      `}>
+      <div 
+        className={`
+          w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden
+          ${sizes[size] || sizes.md}
+        `}
+      >
         <div
           className={`
             ${colors[color] || colors.indigo}
@@ -51,8 +78,38 @@ export default function ProgressBar({
           aria-valuenow={value}
           aria-valuemin={0}
           aria-valuemax={max}
+          id={id}
+          {...ariaLabelProps}
         />
       </div>
     </div>
   )
 }
+
+ProgressBar.propTypes = {
+  value: PropTypes.number,
+  max: PropTypes.number,
+  label: PropTypes.string,
+  showPercentage: PropTypes.bool,
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  color: PropTypes.oneOf(['indigo', 'green', 'red', 'yellow', 'blue', 'gray']),
+  animated: PropTypes.bool,
+  id: PropTypes.string,
+  className: PropTypes.string,
+  ariaLabel: PropTypes.string,
+  ariaLabelledby: PropTypes.string,
+};
+
+ProgressBar.defaultProps = {
+  value: 0,
+  max: 100,
+  label: undefined,
+  showPercentage: true,
+  size: "md",
+  color: "indigo",
+  animated: false,
+  id: undefined,
+  className: "",
+  ariaLabel: undefined,
+  ariaLabelledby: undefined,
+};

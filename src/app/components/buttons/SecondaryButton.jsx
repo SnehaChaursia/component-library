@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export default function SecondaryButton({ children, ...props }) {
   return (
     <button
@@ -8,3 +10,7 @@ export default function SecondaryButton({ children, ...props }) {
     </button>
   )
 }
+
+SecondaryButton.propTypes = {
+  children: PropTypes.node.isRequired,
+};
