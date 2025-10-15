@@ -84,6 +84,7 @@ import Accordion from "./Accordion/index";
 import { HiOutlineRefresh } from "react-icons/hi";
 import { FaTrash } from "react-icons/fa";
 import SignupPage from "./FormInput/SignupPage";
+import OTPVerification from "./FormInput/OTPVerification";
 
 export default function Page() {
   // Search and Filter State
@@ -922,6 +923,26 @@ export default function Page() {
                   />
                 </div>
               </div>
+                {/* OTP Verification Card */}
+                <div className="p-6 bg-gradient-to-r from-indigo-50 to-indigo-100/80 dark:from-indigo-900 dark:to-indigo-700 text-indigo-900 dark:text-indigo-100 rounded-xl font-medium shadow-sm border border-indigo-200 dark:border-indigo-800">
+                  <h3 className="text-lg font-semibold mb-2">
+                    🔑 OTP Verification
+                  </h3>
+                  <div className="mt-4">
+                    <OTPVerification
+                      length={6}
+                      onVerify={async (code) => {
+                        console.log('Verifying code', code);
+                        await new Promise(r => setTimeout(r, 600));
+                        if (code !== '123456') throw new Error('Invalid code (try 123456)');
+                      }}
+                      onResend={async () => {
+                        console.log('Resending OTP');
+                        await new Promise(r => setTimeout(r, 400));
+                      }}
+                    />
+                  </div>
+                </div>
             </div>
           </section>
         )}
