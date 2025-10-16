@@ -85,6 +85,8 @@ import { HiOutlineRefresh } from "react-icons/hi";
 import { FaTrash } from "react-icons/fa";
 import SignupPage from "./FormInput/SignupPage";
 import OTPVerification from "./FormInput/OTPVerification";
+// Calendar
+import Calendar from "./Calender/Calendar";
 
 export default function Page() {
   // Search and Filter State
@@ -159,6 +161,15 @@ export default function Page() {
       alt: "Dana",
       online: false,
     },
+  ];
+
+  // Demo data for Calendar
+  const today = new Date();
+  const fmt = (d) => d.toISOString().slice(0, 10);
+  const calendarEvents = [
+    { date: fmt(today), label: "Today", color: "#6366f1" },
+    { date: fmt(new Date(today.getFullYear(), today.getMonth(), today.getDate() + 2)), label: "Release", color: "#22c55e" },
+    { date: fmt(new Date(today.getFullYear(), today.getMonth(), today.getDate() + 5)), label: "Review", color: "#f59e0b" },
   ];
 
 
@@ -303,6 +314,16 @@ export default function Page() {
         ),
         keywords: ["login", "form", "authentication", "signin", "auth", "email", "password"],
         desc: "Complete login form with validation and social login options"
+      },
+      {
+        name: "Calendar",
+        component: (
+          <div className="max-w-md">
+            <Calendar events={calendarEvents} />
+          </div>
+        ),
+        keywords: ["calendar", "date", "schedule", "month", "events"],
+        desc: "Accessible, responsive month-view calendar with event indicators"
       },
     ],
     backgrounds: [
