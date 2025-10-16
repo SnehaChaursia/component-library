@@ -233,7 +233,7 @@ export default function ContactPage() {
                   <h3 className="font-medium text-gray-900 dark:text-white">Email</h3>
                   <a
                     href="mailto:gps.96169@gmail.com"
-                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors break-all max-w-full"
                   >
                     gps.96169@gmail.com
                   </a>
@@ -255,7 +255,7 @@ export default function ContactPage() {
                     href="https://github.com/Gyanthakur/component-library"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors break-all max-w-full"
                   >
                     github.com/Gyanthakur/component-library
                   </a>
