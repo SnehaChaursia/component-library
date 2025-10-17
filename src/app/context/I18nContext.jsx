@@ -4,6 +4,9 @@ import i18n from '../i18n';
 
 const I18nContext = createContext();
 
+// Helper function to safely access browser APIs
+const isBrowser = typeof window !== 'undefined';
+
 export function I18nProvider({ children }) {
   const [locale, setLocale] = useState('en');
   const [locales] = useState(['en', 'es', 'fr']);
@@ -13,10 +16,15 @@ export function I18nProvider({ children }) {
     // Initialize i18n
     const initializeI18n = async () => {
       try {
-        // Detect language from browser or localStorage
-        const savedLocale = localStorage.getItem('locale');
-        const browserLocale = navigator.language.split('-')[0];
-        const initialLocale = savedLocale || browserLocale || 'en';
+        let initialLocale = 'en';
+        
+        // Only access browser APIs on the client side
+        if (isBrowser) {
+          // Detect language from browser or localStorage
+          const savedLocale = localStorage.getItem('locale');
+          const browserLocale = navigator.language.split('-')[0];
+          initialLocale = savedLocale || browserLocale || 'en';
+        }
         
         // Ensure locale is supported
         const supportedLocale = locales.includes(initialLocale) ? initialLocale : 'en';
@@ -39,7 +47,10 @@ export function I18nProvider({ children }) {
       try {
         await i18n.changeLanguage(newLocale);
         setLocale(newLocale);
-        localStorage.setItem('locale', newLocale);
+        // Only access localStorage on the client side
+        if (isBrowser) {
+          localStorage.setItem('locale', newLocale);
+        }
       } catch (error) {
         console.warn('Failed to change language:', error);
       }

@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import { useState } from 'react';
 import PrimaryButton from './../components/buttons/PrimaryButton';
 import SecondaryButton from './../components/buttons/SecondaryButton';
 import OutlineButton from './../components/buttons/OutlineButton';
@@ -10,12 +10,12 @@ import Badge from './../components/feedback/Badge';
 import ProgressBar from './../components/feedback/ProgressBar';
 
 export default function FeedbackPage() {
-  const [feedback, setFeedback] = React.useState('');
-  const [rating, setRating] = React.useState('');
-  const [category, setCategory] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [showSuccess, setShowSuccess] = React.useState(false);
-  const [showError, setShowError] = React.useState(false);
+  const [feedback, setFeedback] = useState('');
+  const [rating, setRating] = useState('');
+  const [category, setCategory] = useState('');
+  const [email, setEmail] = useState('');
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const categoryOptions = [
     { value: 'bug', label: 'Bug Report' },

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { useState, useEffect, useRef } from "react";
 import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.css";
 import Link from "next/link";
@@ -21,7 +21,7 @@ export default function HomePage() {
   const router = useRouter();
 
   // Track page view
-  React.useEffect(() => {
+  useEffect(() => {
     trackComponentView('HomePage');
   }, [trackComponentView]);
 
@@ -181,9 +181,9 @@ export default function HomePage() {
 }
 
 function CodeBlock({ code }) {
-  const ref = React.useRef(null);
+  const ref = useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     hljs.highlightElement(ref.current);
   }, [code]);
 
